@@ -23,9 +23,6 @@ Incluye hot-reload en desarrollo, migraciones automáticas, guía de backup/rest
 - README.md
 
 ## Variables de entorno
-
-No subas secretos. Usa archivos de ejemplo y define los reales en tu entorno.
-
 Backend (desarrollo) — popoyan-backend/.env.docker:
 ```
 NODE_ENV=development
