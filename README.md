@@ -6,7 +6,7 @@ Monorepo con:
 - Base de datos: PostgreSQL
 - Orquestación: Docker Compose (desarrollo)
 
-Incluye hot-reload en desarrollo, migraciones automáticas, guía de backup/restore.
+Incluye hot-reload en desarrollo, migraciones automáticas.
 
 ## Requisitos
 
@@ -19,7 +19,6 @@ Incluye hot-reload en desarrollo, migraciones automáticas, guía de backup/rest
 - popoyan-backend/
 - docker-compose.dev.yml
 - docker-compose.prod.yml
-- db_backups/ (opcional, para dumps de DB)
 - README.md
 
 ## Variables de entorno
@@ -65,29 +64,6 @@ docker image prune -af
 docker builder prune -af
 docker compose -f docker-compose.dev.yml up --build
 ```
-
-## Backup y restore de base de datos
-
-Crear dump “custom” (recomendado):
-```
-docker compose -f docker-compose.dev.yml exec -T postgres sh -lc \
-  'pg_dump -U postgres -d popoyan -Fc -f /tmp/seed.dump'
-docker compose -f docker-compose.dev.yml cp postgres:/tmp/seed.dump ./db_backups/seed.dump
-```
-
-Restaurar solo datos:
-```
-# (Opcional) vaciar tablas
-docker compose -f docker-compose.dev.yml exec -T postgres psql -U postgres -d popoyan -c \
-"DO $$DECLARE r record; BEGIN FOR r IN (SELECT tablename FROM pg_tables WHERE schemaname='public') LOOP EXECUTE 'TRUNCATE TABLE ' || quote_ident(r.tablename) || ' RESTART IDENTITY CASCADE'; END LOOP; END$$;"
-
-# Restaurar
-docker compose -f docker-compose.dev.yml exec -T postgres pg_restore \
-  -U postgres -d popoyan --data-only --no-owner --no-privileges --disable-triggers --schema=public \
-  /db_backups/seed.dump
-```
-
-Mover datos a otra PC: copia db_backups/seed.dump y ejecuta el restore en esa PC.
 
 ## Problemas comunes
 
