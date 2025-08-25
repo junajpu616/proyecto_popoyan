@@ -1,0 +1,17 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Instala dependencias primero para cache eficiente
+COPY package*.json ./
+RUN npm install
+
+# Copia el resto del código
+COPY . .
+
+# Vite expone 5173 y necesita --host para aceptar conexiones externas
+EXPOSE 5173
+
+ENV HOST=0.0.0.0
+
+# El comando real lo inyecta docker-compose para permitir hot-reload

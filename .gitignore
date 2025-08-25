@@ -1,0 +1,31 @@
+# Dependencias
+node_modules/
+**/node_modules/
+
+# Builds
+dist/
+build/
+
+# Ambiente (no subir secretos)
+.env
+**/.env
+.env.*.local
+**/.env.*.local
+popoyan-backend/.env.docker
+popoyan-backend/.env.production
+popoyan-frontend/.env
+popoyan-frontend/.env.local
+popoyan-frontend/.env.production
+
+# Docker
+*.pid
+**/.DS_Store
+db_backups/
+# Volúmenes locales si usas bind mount de datos:
+db_data/
+
+# Logs
+logs/
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
