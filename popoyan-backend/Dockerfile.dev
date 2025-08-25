@@ -7,8 +7,6 @@ RUN npm install
 
 COPY . .
 
-# Asegúrate de que tu servidor escuche en 0.0.0.0 (no solo localhost)
-# para que sea accesible desde fuera del contenedor.
 EXPOSE 3000
 
 # El comando real lo inyecta docker-compose (npm run dev con nodemon)
