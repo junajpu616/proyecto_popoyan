@@ -6,7 +6,7 @@ node_modules/
 dist/
 build/
 
-# Ambiente (no subir secretos)
+# Ambiente
 .env
 **/.env
 .env.*.local
@@ -21,7 +21,7 @@ popoyan-frontend/.env.production
 *.pid
 **/.DS_Store
 db_backups/
-# Volúmenes locales si usas bind mount de datos:
+# Volúmenes locales si se usa bind mount de datos:
 db_data/
 
 # Logs
