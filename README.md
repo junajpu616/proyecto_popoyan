@@ -28,7 +28,6 @@ Backend (desarrollo) — popoyan-backend/.env.docker:
 NODE_ENV=development
 PORT=3000
 DATABASE_URL=postgresql://postgres:postgres@postgres:5432/popoyan
-DB_SSL=false
 CORS_ORIGIN=http://localhost:5173
 PLANTID_API_KEY=REEMPLAZAR
 PLANTID_BASE_URL=https://plant.id/api/v3
