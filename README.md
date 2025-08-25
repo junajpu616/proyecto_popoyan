@@ -21,6 +21,10 @@ Incluye hot-reload en desarrollo, migraciones automáticas.
 - docker-compose.prod.yml
 - README.md
 
+## Base de datos: dump y scripts
+- El repositorio incluye un volcado SQL (dump) y un script para gestionar la base de datos.
+- Importante: el proyecto realiza una migración automática del esquema de la base al iniciarse, por lo que no es necesario importar el dump ni ejecutar los scripts manualmente para desarrollo. Úsalos solo si deseas restaurar datos/estructura manualmente o revisar el esquema.
+
 ## Variables de entorno
 Backend (desarrollo) — popoyan-backend/.env.docker:
 ```
