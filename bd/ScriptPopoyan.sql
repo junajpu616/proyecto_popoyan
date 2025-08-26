@@ -36,7 +36,7 @@ CREATE INDEX IF NOT EXISTS ix_plants_created_at ON plants (created_at DESC);
 CREATE INDEX IF NOT EXISTS ix_plants_entity_trgm     ON plants USING gin (entity_name gin_trgm_ops);
 CREATE INDEX IF NOT EXISTS ix_plants_scientific_trgm ON plants USING gin (scientific_name gin_trgm_ops);
 
--- Para filtros por claves dentro de taxonomy si lo usas
+-- Para filtros por claves dentro de taxonomy
 CREATE INDEX IF NOT EXISTS ix_plants_taxonomy_gin ON plants USING gin (taxonomy);
 
 -- 3) Trigger para updated_at
